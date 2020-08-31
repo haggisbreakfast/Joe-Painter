@@ -1,7 +1,22 @@
 /* Site footer */
 
 footer {
-	background: $color__background-footer;
+	background: $color__background-secondary-footer;
 	padding: 5%;
+	.site-name {
+		font-size: 32px;
+		margin-right: 20px;
+		color: #D2514B;
+	}
+	.site-info {
+		display: flex;
+		align-items: center;
+		@include media(mobile-down) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+	}
 }
+
 

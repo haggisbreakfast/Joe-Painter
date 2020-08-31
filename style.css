@@ -202,9 +202,14 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 ## Header
 --------------------------------------------------------------*/
 .site-header {
-  padding: 2.5% 5%;
+  padding: 3% 5%;
   display: flex;
   align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  .site-header {
+    padding-top: 7.5%;
+  }
 }
 .site-header.featured-image {
   display: flex;
@@ -329,7 +334,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .site-description {
   white-space: nowrap;
   display: inline;
-  color: #767676;
+  color: #2D5DAA !important;
   font-weight: normal;
   margin: -6px 0 0 30px;
 }
@@ -348,8 +353,23 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --------------------------------------------------------------*/
 /* Site footer */
 footer {
-  background: #f7ede2;
+  background: #2D5DAA;
   padding: 5%;
+}
+footer .site-name {
+  font-size: 32px;
+  margin-right: 20px;
+  color: #D2514B;
+}
+footer .site-info {
+  display: flex;
+  align-items: center;
+}
+@media only screen and (max-width: 600px) {
+  footer .site-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 body {
@@ -412,7 +432,7 @@ p {
 a {
   text-decoration: none;
   transition: color 110ms ease-in-out;
-  color: #f4a261;
+  color: #f7ede2;
 }
 a:visited {
   color: #264653;
@@ -461,7 +481,7 @@ body.page .main-navigation {
   .main-navigation {
     width: 100%;
     text-align: left;
-    padding-top: 20px;
+    padding-top: 30px;
   }
 }
 .main-navigation > div {
@@ -504,7 +524,7 @@ body.page .main-navigation {
 }
 .main-navigation .main-menu > li > a {
   font-weight: 700;
-  color: #f4a261;
+  color: #f7ede2;
   margin-right: 0.5rem;
 }
 .main-navigation .main-menu > li > a + svg {
@@ -514,7 +534,7 @@ body.page .main-navigation {
   color: #e9c46a;
 }
 .main-navigation .main-menu .sub-menu {
-  background-color: #f4a261;
+  background-color: #f7ede2;
   color: #C9E3DB;
   list-style: none;
   padding-left: 0;
@@ -908,15 +928,12 @@ body.page .main-navigation {
   .home .featured-image {
     width: 100%;
   }
-  .home .featured-image img {
-    width: 100%;
-  }
 }
 .home .featured-image img {
-  width: 90%;
+  width: 100%;
   height: 100%;
   object-fit: contain;
-  border: 2px solid black;
+  border: 3px solid #2D5DAA;
 }
 .home .text {
   width: 50%;
@@ -927,6 +944,12 @@ body.page .main-navigation {
     width: 100%;
     padding-left: 0;
   }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .testimonials {
@@ -948,15 +971,23 @@ body.page .main-navigation {
 
 .page-title {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 60px;
 }
 
 .wp-block-nextend-smartslider3 {
-  border: 1px solid yellow;
-  width: 80vw;
+  border: 3px solid #f7ede2;
+  width: 75vw;
+  margin-top: 5%;
 }
-.wp-block-nextend-smartslider3 .n2_clear {
-  object-fit: contain;
+.wp-block-nextend-smartslider3 .nextend-bar .n2-ow {
+  color: #f7ede2 !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  font-weight: normal !important;
+}
+.wp-block-nextend-smartslider3 .nextend-bar .n2-style-ec2490c653b690c29f1d47af60828ed7-simple {
+  background: transparent !important;
+  opacity: 100% !important;
 }
 
 /* Content */

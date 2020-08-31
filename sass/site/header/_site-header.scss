@@ -1,11 +1,13 @@
 // Site header
 
 .site-header {
-	padding: 2.5% $size__site-margins;
+	padding: 3% $size__site-margins;
 	display: flex;
 	align-items: center;
 	// background: $color__background-header;
-
+@include media(tablet-down) {
+	padding-top: 7.5%;
+}
 	&.featured-image {
 		display: flex;
 		flex-direction: column;
@@ -159,7 +161,7 @@
 .site-description {
 	white-space: nowrap;
 	display: inline;
-	color: $color__text-light;
+	color: $color__background-secondary-footer !important;
 	font-weight: normal;
 	margin: -6px 0 0 30px;
 }

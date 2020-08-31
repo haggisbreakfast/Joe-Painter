@@ -584,7 +584,7 @@ h6 {
 
 a {
   transition: color 110ms ease-in-out;
-  color: #f4a261;
+  color: #f7ede2;
   text-decoration: none;
 }
 a:hover, a:active {
@@ -821,7 +821,7 @@ figcaption,
 /** === Blockquote === */
 .wp-block-quote:not(.is-large):not(.is-style-large) {
   border-width: 2px;
-  border-color: #f4a261;
+  border-color: #f7ede2;
 }
 .wp-block-quote.is-large, .wp-block-quote.is-style-large {
   margin-top: 2.8125em;
@@ -873,7 +873,7 @@ figcaption,
   }
 }
 .wp-block-pullquote.is-style-solid-color:not(.has-background-color) {
-  background-color: #f4a261;
+  background-color: #f7ede2;
 }
 
 .wp-block[data-type="core/pullquote"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty=true]::before,
@@ -953,7 +953,7 @@ figcaption,
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .wp-block-file .wp-block-file__textlink {
-  color: #f4a261;
+  color: #f7ede2;
 }
 .wp-block-file .wp-block-file__textlink:hover {
   color: #e9c46a;
@@ -964,7 +964,7 @@ figcaption,
   line-height: 1.8;
   font-size: 0.8888888889em;
   font-weight: bold;
-  background-color: #f4a261;
+  background-color: #f7ede2;
   border-radius: 5px;
 }
 .wp-block-file .wp-block-file__button-richtext-wrapper {
@@ -1127,7 +1127,7 @@ ul.wp-block-archives li ul,
   /* Add style for galleries in classic-editor block */
 }
 .wp-block-freeform blockquote {
-  border-left: 2px solid #f4a261;
+  border-left: 2px solid #f7ede2;
 }
 .wp-block-freeform blockquote cite {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

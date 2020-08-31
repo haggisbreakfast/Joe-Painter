@@ -3,6 +3,7 @@
 $color__background-body: #C9E3DB;
 $color__background-header:  #264653;
 $color__background-footer: #f7ede2;
+$color__background-secondary-footer: #2D5DAA;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #0073aa;
@@ -22,7 +23,7 @@ $color__text-input: #666;
 $color__text-input-focus: #111;
 
 // Links
-$color__link: #f4a261;
+$color__link: $color__background-footer;
 $color__link-visited: $color__secondary-text;
 $color__link-hover: #e9c46a;
 
