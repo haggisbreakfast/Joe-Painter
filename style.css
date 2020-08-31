@@ -1,0 +1,1181 @@
+@charset "UTF-8";
+/*
+Theme Name: Twenty Nineteen
+Theme URI: https://wordpress.org/themes/twentynineteen/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Our 2019 default theme is designed to show off the power of the block editor. It features custom styles for all the default blocks, and is built so that what you see in the editor looks like what you'll see on your website. Twenty Nineteen is designed to be adaptable to a wide range of websites, whether you’re running a photo blog, launching a new business, or supporting a non-profit. Featuring ample whitespace and modern sans-serif headlines paired with classic serif body text, it's built to be beautiful on all screen sizes.
+Requires at least: WordPress 4.9.6
+Version: 1.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentynineteen
+Tags: one-column, flexible-header, accessibility-ready, custom-colors, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, rtl-language-support, sticky-post, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Twenty Nineteen is based on Underscores https://underscores.me/, (C) 2012-2019 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+# Normalize
+# Typography
+	## Headings
+	## Copy
+# Elements
+	## Lists
+	## Tables
+# Forms
+	## Buttons
+	## Fields
+# Navigation
+	## Links
+	## Menus
+	## Next & Previous
+# Accessibility
+# Alignments
+# Clearings
+# Layout
+# Widgets
+# Content
+	## Archives
+	## Posts and pages
+	## Comments
+# Blocks
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+/*
+ * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
+ * This results in a jumping cursor when typing in both the Classic and block
+ * editors. The following font-face override fixes the issue by manually inserting
+ * a custom font that includes just a Hoefler Text space replacement for that
+ * character instead.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+@font-face {
+  font-family: "NonBreakingSpaceOverride";
+  src: url(data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMoAA0AAAAACDQAAALTAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GYACCahEICjx3CywAATYCJANUBCAFhiEHgWwbXQfILgpsY+rQRRARwyAs6uL7pxzYhxEE+32b3aeHmifR6tklkS9hiZA0ewkqGRJE+H7/+6378ASViK/PGeavqJyOzsceKi1s3BCiQsiOdn1r/RBgIJYEgCUhbm/8/8/h4saPssnTNkkiWUBrTRtjmQSajw3Ui3pZ3LYDPD+XG2C3JA/yKAS8/rU5eNfuGqRf4eNNgV4YAlIIgxglEkWe6FYpq10+wi3g+/nUgvgPFczNrz/RsTgVm/zfbPuHZlsuQECxuyqBcQwKFBjFgKO8AqP4bAN9tFJtnM9xPcbNjeXS/x1wY/xU52f5W/X1+9cnH4YwKIaoRRAkUkj/YlAAeF/624foiIDBgBmgQBeGAyhBljUPZUm/l2dTvmpqcBDUOHdbPZWd8JsBAsGr4w8/EDn82/bUPx4eh0YNrQTBuHO2FjQEAGBwK0DeI37DpQVqdERS4gZBhpeUhWCfLFz7J99aEBgsJCHvUGAdAPp4IADDCAPCEFMGpMZ9AQpTfQtQGhLbGVBZFV8BaqNyP68oTZgHNj3M8kBPfXTTC9t90UuzYhy9ciH0grVlOcqyCytisvbsERsEYztiznR0WCrmTksJwbSNK6fd1Rvr25I9oLvctUoEbNOmXJbqgYgPXEHJ82IUsrCnpkxh23F1rfZ2zcRnJYoXtauB3VTFkFXQg3uoZYD5qE0kdjDtoDoF1h2bulGmev5HbYhbrjtohQSRI4aNOkffIcT+d3v6atpaYh3JvPoQsztCcqvaBkppDSPcQ3bw3KaCBo1f5CJWTZEgW3LjLofYg51MaVezrx8xZitYbQ9KYeoRaqQdVLwSEfrKXLK1otCWOKNdR/YwYAfon5Yk8O2MJfSD10dPGA5PIJJQMkah0ugMJiv6x4Dm7LEa8xnrRGGGLAg4sAlbsA07sAt76DOsXKO3hIjtIlpnnFrt1qW4kh6NhS83P/6HB/fl1SMAAA==) format("woff2"), url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAUQAA0AAAAACDQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAE9AAAABwAAAAchf5yU0dERUYAAATYAAAAHAAAAB4AJwAbT1MvMgAAAaAAAABJAAAAYJAcgU5jbWFwAAACIAAAAF4AAAFqUUxBZ2dhc3AAAATQAAAACAAAAAgAAAAQZ2x5ZgAAApAAAAAyAAAAPL0n8y9oZWFkAAABMAAAADAAAAA2Fi93Z2hoZWEAAAFgAAAAHQAAACQOSgWaaG10eAAAAewAAAAzAAAAVC7TAQBsb2NhAAACgAAAABAAAAAsAOQBAm1heHAAAAGAAAAAHQAAACAAWQALbmFtZQAAAsQAAAF6AAADIYvD/Adwb3N0AAAEQAAAAI4AAADsapk2o3jaY2BkYGAA4ov5mwzj+W2+MnCzXwCKMNzgCBSB0LfbQDQ7AxuI4mBgAlEAFKQIRHjaY2BkYGD3+NvCwMDBAALsDAyMDKhAFAA3+wH3AAAAeNpjYGRgYBBl4GBgYgABEMnIABJzAPMZAAVmAGUAAAB42mNgZlJhnMDAysDCKsKygYGBYRqEZtrDYMT4D8gHSmEHjgUFOQwODAqqf9g9/rYwMLB7MNUAhRlBcsxBrMlASoGBEQAj8QtyAAAAeNrjYGBkAAGmWQwMjO8gmBnIZ2NA0ExAzNjAAFYJVn0ASBsD6VAIDZb7AtELAgANIgb9AHjaY2BgYGaAYBkGRgYQSAHyGMF8FgYPIM3HwMHAxMDGoMCwQIFLQV8hXvXP//9AcRCfAcb///h/ygPW+w/vb7olBjUHCTCyMcAFGZmABBO6AogThgZgIUsXAEDcEzcAAHjaY2BgECMCyoEgACZaAed42mNgYmRgYGBnYGNgYAZSDJqMgorCgoqCjECRXwwNrCAKSP5mAAFGBiRgyAAAi/YFBQAAeNqtkc1OwkAUhU/5M25cEhcsZick0AwlBJq6MWwgJkAgYV/KAA2lJeUn+hY+gktXvpKv4dLTMqKycGHsTZNv7px7z50ZAFd4hYHjdw1Ls4EiHjVncIFnzVnc4F1zDkWjrzmPW+NNcwGlzIRKI3fJlUyrEjZQxb3mDH2fNGfRx4vmHKqG0JzHg6E0F9DOlFBGBxUI1GEzLNT4S0aLuTtsGAEUuYcQHkyg3KmIum1bNUvKlrjbbAIleqHHnS4iSudpQcySMYtdFiXlAxzSbAwfMxK6kZoHKhbjjespMTioOPZnzI+4ucCeTVyKMVKLfeAS6vSWaTinuZwzyy/Dc7vaed+6KaV0kukdPUk6yOcctZPvvxxqksq2lEW8RvHjMEO2FCl/zy6p3NEm0R9OFSafJdldc4QVeyaaObMBO0/5cCaa6d9Ggyubxire+lEojscdjoWUR1xGOy8KD8mG2ZLO2l2paDc3A39qmU2z2W5YNv5+u79e6QfGJY/hAAB42m3NywrCMBQE0DupWp/1AYI7/6DEaLQu66Mrd35BKUWKJSlFv1+rue4cGM7shgR981qSon+ZNwUJ8iDgoYU2OvDRRQ99DDDECAHGmGCKmf80hZSx/Kik/LliFbtmN6xmt+yOjdg9GztV4tROnRwX/Bsaaw51nt4Lc7tWaZYHp/MlzKx51LZs5htNri+2AAAAAQAB//8AD3jaY2BkYGDgAWIxIGZiYARCESBmAfMYAAR6AEMAAAABAAAAANXtRbgAAAAA2AhRFAAAAADYCNuG) format("woff");
+}
+/* If we add the border using a regular CSS border, it won't look good on non-retina devices,
+ * since its edges can look jagged due to lack of antialiasing. In this case, we are several
+ * layers of box-shadow to add the border visually, which will render the border smoother. */
+/* Calculates maximum width for post content */
+/* Nested sub-menu padding: 10 levels deep */
+/* Ensure all font family declarations come with non-latin fallbacks */
+/* Build our non-latin font styles */
+.comment-navigation .nav-previous:lang(ar),
+.comment-navigation .nav-next:lang(ar) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(ary),
+.comment-navigation .nav-next:lang(ary) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(azb),
+.comment-navigation .nav-next:lang(azb) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(ckb),
+.comment-navigation .nav-next:lang(ckb) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(fa-IR),
+.comment-navigation .nav-next:lang(fa-IR) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(haz),
+.comment-navigation .nav-next:lang(haz) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(ps),
+.comment-navigation .nav-next:lang(ps) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(be),
+.comment-navigation .nav-next:lang(be) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(bg-BG),
+.comment-navigation .nav-next:lang(bg-BG) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(kk),
+.comment-navigation .nav-next:lang(kk) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(mk-MK),
+.comment-navigation .nav-next:lang(mk-MK) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(mn),
+.comment-navigation .nav-next:lang(mn) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(ru-RU),
+.comment-navigation .nav-next:lang(ru-RU) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(sah),
+.comment-navigation .nav-next:lang(sah) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(sr-RS),
+.comment-navigation .nav-next:lang(sr-RS) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(tt-RU),
+.comment-navigation .nav-next:lang(tt-RU) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(uk),
+.comment-navigation .nav-next:lang(uk) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(zh-HK),
+.comment-navigation .nav-next:lang(zh-HK) {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif;
+}
+.comment-navigation .nav-previous:lang(zh-TW),
+.comment-navigation .nav-next:lang(zh-TW) {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif;
+}
+.comment-navigation .nav-previous:lang(zh-CN),
+.comment-navigation .nav-next:lang(zh-CN) {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif;
+}
+.comment-navigation .nav-previous:lang(bn-BD),
+.comment-navigation .nav-next:lang(bn-BD) {
+  font-family: Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(hi-IN),
+.comment-navigation .nav-next:lang(hi-IN) {
+  font-family: Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(mr),
+.comment-navigation .nav-next:lang(mr) {
+  font-family: Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(ne-NP),
+.comment-navigation .nav-next:lang(ne-NP) {
+  font-family: Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(el),
+.comment-navigation .nav-next:lang(el) {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(gu),
+.comment-navigation .nav-next:lang(gu) {
+  font-family: Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(he-IL),
+.comment-navigation .nav-next:lang(he-IL) {
+  font-family: "Arial Hebrew", Arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(ja),
+.comment-navigation .nav-next:lang(ja) {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", Meiryo, "Helvetica Neue", sans-serif;
+}
+.comment-navigation .nav-previous:lang(ko-KR),
+.comment-navigation .nav-next:lang(ko-KR) {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", Dotum, sans-serif;
+}
+.comment-navigation .nav-previous:lang(th),
+.comment-navigation .nav-next:lang(th) {
+  font-family: "Sukhumvit Set", "Helvetica Neue", helvetica, arial, sans-serif;
+}
+.comment-navigation .nav-previous:lang(vi),
+.comment-navigation .nav-next:lang(vi) {
+  font-family: "Libre Franklin", sans-serif;
+}
+
+/*--------------------------------------------------------------
+## Header
+--------------------------------------------------------------*/
+.site-header {
+  padding: 2.5% 5%;
+  display: flex;
+  align-items: center;
+}
+.site-header.featured-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.site-header.featured-image .site-branding-container {
+  margin-bottom: auto;
+}
+.site-header .title-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.site-header .title-container h2, .site-header .title-container a {
+  color: #264653;
+}
+
+.site-branding {
+  color: #767676;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  position: relative;
+  word-wrap: break-word;
+}
+@media only screen and (min-width: 768px) {
+  .site-branding {
+    margin: 0 5%;
+  }
+}
+
+.site-logo {
+  position: relative;
+  z-index: 999;
+  margin-bottom: calc(.66 * 1rem);
+}
+@media only screen and (min-width: 768px) {
+  .site-logo {
+    margin-bottom: 0;
+    position: absolute;
+    right: calc(100% + (1.25 * 1rem));
+    top: 4px;
+    z-index: 999;
+  }
+}
+.site-logo .custom-logo-link {
+  border-radius: 100%;
+  box-sizing: content-box;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  display: block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  transition: box-shadow 200ms ease-in-out;
+}
+.site-logo .custom-logo-link .custom-logo {
+  min-height: inherit;
+}
+.site-logo .custom-logo-link:hover, .site-logo .custom-logo-link:active, .site-logo .custom-logo-link:focus {
+  box-shadow: 0 0 0 2px black;
+}
+@media only screen and (min-width: 768px) {
+  .site-logo .custom-logo-link {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.site-title {
+  color: #f7ede2 !important;
+  margin: 0;
+  position: relative;
+  /* When there is no description set, make sure navigation appears below title. */
+}
+.site-title a {
+  color: #f7ede2 !important;
+}
+.featured-image .site-title {
+  margin: 0;
+}
+@media only screen and (min-width: 768px) {
+  .featured-image .site-title {
+    display: inline-block;
+  }
+}
+.site-title + .main-navigation {
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  .site-title {
+    display: inline;
+  }
+}
+.site-title:after {
+  content: "";
+  display: inline-block;
+  background: url("./assets/paint-can.svg");
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+  margin-top: -10px;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  transform: rotate(-50deg);
+  transition: transform 0.5s ease-in-out;
+}
+.site-title:hover::after {
+  transform: rotate(0deg);
+}
+
+.site-description {
+  display: inline;
+  color: #767676;
+  font-weight: normal;
+  margin: -6px 0 0 30px;
+}
+
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Archives
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+/* Site footer */
+footer {
+  background: #f7ede2;
+  padding: 5%;
+}
+
+body {
+  margin: 0;
+  background-image: url("./assets/paint-roller-3.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Normalize */
+/* Typography */
+h1 {
+  font-size: 80px;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+p {
+  font-size: 22px;
+  color: black;
+}
+
+/* Elements */
+/* Forms */
+/* Navigation */
+/*--------------------------------------------------------------
+## Links
+--------------------------------------------------------------*/
+a {
+  text-decoration: none;
+  transition: color 110ms ease-in-out;
+  color: #f4a261;
+}
+a:visited {
+  color: #264653;
+}
+a:hover, a:active {
+  color: #e9c46a;
+  outline: 0;
+  text-decoration: none;
+}
+a:focus {
+  outline: thin dotted;
+}
+
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+/** === Main menu === */
+.main-navigation {
+  margin-top: 0.25rem;
+  width: 50%;
+  text-align: right;
+  /* Un-style buttons */
+  /*
+   * Sub-menu styles
+   *
+   * :focus-within needs its own selector so other similar
+   * selectors don’t get ignored if a browser doesn’t recognize it
+   */
+  /**
+   * Fade-in animation for top-level submenus
+   */
+  /**
+   * Off-canvas touch device styles
+   */
+}
+body.page .main-navigation {
+  display: block;
+}
+.main-navigation li a {
+  color: #264653 !important;
+}
+.main-navigation > div {
+  display: inline;
+}
+.main-navigation button {
+  display: inline-block;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.main-navigation button:hover, .main-navigation button:focus {
+  background: transparent;
+}
+.main-navigation button:focus {
+  outline: 1px solid transparent;
+  outline-offset: -4px;
+}
+.main-navigation button:active {
+  transform: scale(0.99);
+}
+.main-navigation .main-menu {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.main-navigation .main-menu > li {
+  display: inline;
+  position: relative;
+}
+.main-navigation .main-menu > li > a {
+  font-weight: 700;
+  color: #f4a261;
+  margin-right: 0.5rem;
+}
+.main-navigation .main-menu > li > a + svg {
+  margin-right: 0.5rem;
+}
+.main-navigation .main-menu > li > a:hover, .main-navigation .main-menu > li > a:hover + svg {
+  color: #e9c46a;
+}
+.main-navigation .main-menu > li.menu-item-has-children {
+  display: inline-block;
+  position: inherit;
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .main-menu > li.menu-item-has-children {
+    position: relative;
+  }
+}
+.main-navigation .main-menu > li.menu-item-has-children > a {
+  margin-right: 0.125rem;
+}
+.main-navigation .main-menu > li.menu-item-has-children > a:after,
+.main-navigation .main-menu > li.menu-item-has-children .menu-item-has-children > a:after {
+  content: "";
+  display: none;
+}
+.main-navigation .main-menu > li.menu-item-has-children .submenu-expand {
+  display: inline-block;
+  margin-right: 0.25rem;
+  /* Priority+ Menu */
+}
+.main-navigation .main-menu > li.menu-item-has-children .submenu-expand.main-menu-more-toggle {
+  position: relative;
+  height: 24px;
+  line-height: 1.2;
+  width: 24px;
+  padding: 0;
+  margin-left: 0.5rem;
+}
+.main-navigation .main-menu > li.menu-item-has-children .submenu-expand.main-menu-more-toggle svg {
+  height: 24px;
+  width: 24px;
+  top: -0.125rem;
+  vertical-align: text-bottom;
+}
+.wp-customizer-unloading .main-navigation .main-menu > li.menu-item-has-children .submenu-expand, .main-navigation .main-menu > li.menu-item-has-children .submenu-expand.is-empty {
+  display: none;
+}
+.main-navigation .main-menu > li.menu-item-has-children .submenu-expand svg {
+  position: relative;
+  top: 0.2rem;
+}
+.main-navigation .main-menu > li:last-child > a, .main-navigation .main-menu > li:last-child.menu-item-has-children .submenu-expand {
+  margin-right: 0;
+}
+.main-navigation .sub-menu {
+  background-color: #f4a261;
+  color: #C9E3DB;
+  list-style: none;
+  padding-left: 0;
+  position: absolute;
+  opacity: 0;
+  left: -9999px;
+  z-index: 99999;
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .sub-menu {
+    width: auto;
+    min-width: -moz-max-content;
+    min-width: -webkit-max-content;
+    min-width: max-content;
+  }
+}
+.main-navigation .sub-menu > li {
+  display: block;
+  float: none;
+  position: relative;
+}
+.main-navigation .sub-menu > li.menu-item-has-children .submenu-expand {
+  display: inline-block;
+  position: absolute;
+  width: calc( 24px + 1rem );
+  right: 0;
+  top: calc( .125 * 1rem );
+  bottom: 0;
+  color: white;
+  line-height: 1;
+  padding: calc( .5 * 1rem );
+}
+.main-navigation .sub-menu > li.menu-item-has-children .submenu-expand svg {
+  top: 0;
+}
+.main-navigation .sub-menu > li.menu-item-has-children .submenu-expand {
+  margin-right: 0;
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .sub-menu > li.menu-item-has-children .menu-item-has-children > a:after {
+    content: "›";
+  }
+}
+.main-navigation .sub-menu > li > a,
+.main-navigation .sub-menu > li > .menu-item-link-return {
+  color: #C9E3DB;
+  display: block;
+  line-height: 1.2;
+  text-shadow: none;
+  padding: calc( .5 * 1rem ) calc( 24px + 1rem ) calc( .5 * 1rem ) 1rem;
+  white-space: nowrap;
+}
+.main-navigation .sub-menu > li > a:hover, .main-navigation .sub-menu > li > a:focus,
+.main-navigation .sub-menu > li > .menu-item-link-return:hover,
+.main-navigation .sub-menu > li > .menu-item-link-return:focus {
+  background: #e9c46a;
+}
+.main-navigation .sub-menu > li > a:hover:after, .main-navigation .sub-menu > li > a:focus:after,
+.main-navigation .sub-menu > li > .menu-item-link-return:hover:after,
+.main-navigation .sub-menu > li > .menu-item-link-return:focus:after {
+  background: #e9c46a;
+}
+.main-navigation .sub-menu > li > .menu-item-link-return {
+  width: 100%;
+  font-size: 32px;
+  font-weight: normal;
+  text-align: left;
+}
+.main-navigation .sub-menu > li > a:empty {
+  display: none;
+}
+.main-navigation .sub-menu > li.mobile-parent-nav-menu-item {
+  display: none;
+  font-size: 0.8888888889em;
+  font-weight: normal;
+}
+.main-navigation .sub-menu > li.mobile-parent-nav-menu-item svg {
+  position: relative;
+  top: 0.2rem;
+  margin-right: calc( .25 * 1rem );
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu {
+  display: block;
+  left: 0;
+  margin-top: 0;
+  opacity: 1;
+  width: auto;
+  min-width: 100%;
+  /* Non-mobile position */
+  /* Nested sub-menu dashes */
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu {
+    display: block;
+    margin-top: 0;
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    height: auto;
+    min-width: -moz-max-content;
+    min-width: -webkit-max-content;
+    min-width: max-content;
+    transform: none;
+  }
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu.hidden-links {
+  left: 0;
+  width: 100%;
+  display: table;
+  position: absolute;
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu.hidden-links {
+    right: 0;
+    left: auto;
+    display: block;
+    width: max-content;
+  }
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu .submenu-expand {
+  display: none;
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu .sub-menu {
+  display: block;
+  margin-top: inherit;
+  position: relative;
+  width: 100%;
+  left: 0;
+  opacity: 1;
+  /* Non-mobile position */
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu .sub-menu {
+    float: none;
+    max-width: 100%;
+  }
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu .sub-menu {
+  counter-reset: submenu;
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu .sub-menu > li > a::before {
+  font-family: "NonBreakingSpaceOverride", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-weight: normal;
+  content: "– " counters(submenu, "– ", none);
+  counter-increment: submenu;
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu {
+  display: block;
+  left: 0;
+  margin-top: 0;
+  opacity: 1;
+  width: auto;
+  min-width: 100%;
+  /* Non-mobile position */
+  /* Nested sub-menu dashes */
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu {
+    display: block;
+    float: none;
+    margin-top: 0;
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    height: auto;
+    min-width: -moz-max-content;
+    min-width: -webkit-max-content;
+    min-width: max-content;
+    transform: none;
+  }
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu.hidden-links,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu.hidden-links,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu.hidden-links {
+  left: 0;
+  width: 100%;
+  display: table;
+  position: absolute;
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu.hidden-links,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu.hidden-links,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu.hidden-links {
+    right: 0;
+    left: auto;
+    display: table;
+    width: max-content;
+  }
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu .submenu-expand,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu .submenu-expand,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu .submenu-expand {
+  display: none;
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu .sub-menu,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu .sub-menu,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu .sub-menu {
+  display: block;
+  margin-top: inherit;
+  position: relative;
+  width: 100%;
+  left: 0;
+  opacity: 1;
+  /* Non-mobile position */
+}
+@media only screen and (min-width: 768px) {
+  .main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu .sub-menu,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu .sub-menu,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu .sub-menu {
+    float: none;
+    max-width: 100%;
+  }
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu .sub-menu,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu .sub-menu,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu .sub-menu {
+  counter-reset: submenu;
+}
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu .sub-menu > li > a::before,
+.main-navigation .main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu .sub-menu > li > a::before,
+.main-navigation .main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu .sub-menu > li > a::before {
+  font-family: "NonBreakingSpaceOverride", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-weight: normal;
+  content: "– " counters(submenu, "– ", none);
+  counter-increment: submenu;
+}
+.main-navigation .main-menu > .menu-item-has-children:not(.off-canvas):hover > .sub-menu {
+  animation: fade_in 0.1s forwards;
+}
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu .submenu-expand .svg-icon {
+  transform: rotate(270deg);
+}
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu .sub-menu {
+  opacity: 0;
+  position: absolute;
+  z-index: 0;
+  transform: translateX(-100%);
+}
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu li:hover,
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu li:focus,
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu li > a:hover,
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu li > a:focus {
+  background-color: transparent;
+}
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu > li > a,
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu > li > .menu-item-link-return {
+  white-space: inherit;
+}
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu.expanded-true {
+  display: table;
+  margin-top: 0;
+  opacity: 1;
+  padding-left: 0;
+  /* Mobile position */
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 100000;
+  /* Make sure appears above mobile admin bar */
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  transform: translateX(100%);
+  animation: slide_in_right 0.3s forwards;
+  /* Prevent menu from being blocked by admin bar */
+}
+.main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu.expanded-true > .mobile-parent-nav-menu-item {
+  display: block;
+}
+.admin-bar .main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu.expanded-true {
+  top: 46px;
+  height: calc( 100vh - 46px );
+  /* WP core breakpoint */
+}
+.admin-bar .main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu.expanded-true .sub-menu.expanded-true {
+  top: 0;
+}
+@media only screen and (min-width: 782px) {
+  .admin-bar .main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu.expanded-true {
+    top: 32px;
+    height: calc( 100vh - 32px );
+  }
+  .admin-bar .main-navigation .main-menu .menu-item-has-children.off-canvas .sub-menu.expanded-true .sub-menu.expanded-true {
+    top: 0;
+  }
+}
+.main-navigation .main-menu-more:nth-child(n+3) {
+  display: none;
+}
+
+/* Menu animation */
+@keyframes slide_in_right {
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Social menu */
+.social-navigation {
+  margin-top: calc(1rem / 2 );
+  text-align: left;
+}
+.social-navigation ul.social-links-menu {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.social-navigation ul.social-links-menu li {
+  display: inline-block;
+  vertical-align: bottom;
+  vertical-align: -webkit-baseline-middle;
+  list-style: none;
+}
+.social-navigation ul.social-links-menu li:nth-child(n+2) {
+  margin-left: 0.1em;
+}
+.social-navigation ul.social-links-menu li a {
+  border-bottom: 1px solid transparent;
+  display: block;
+  color: #4a4a4a;
+  margin-bottom: -1px;
+  transition: opacity 110ms ease-in-out;
+}
+.social-navigation ul.social-links-menu li a:hover, .social-navigation ul.social-links-menu li a:active {
+  color: #4a4a4a;
+  opacity: 0.6;
+}
+.social-navigation ul.social-links-menu li a:focus {
+  color: #4a4a4a;
+  opacity: 1;
+  border-bottom: 1px solid #4a4a4a;
+}
+.social-navigation ul.social-links-menu li a svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+  transform: translateZ(0);
+}
+.social-navigation ul.social-links-menu li a svg#ui-icon-link {
+  transform: rotate(-45deg);
+}
+
+@media only screen and (min-width: 768px) {
+  .site-title + .social-navigation,
+.site-description + .social-navigation {
+    margin-top: calc(1rem / 5 );
+  }
+}
+
+/** === Footer menu === */
+.footer-navigation {
+  display: inline;
+}
+.footer-navigation > div {
+  display: inline;
+}
+.footer-navigation .footer-menu {
+  display: inline;
+  padding-left: 0;
+}
+.footer-navigation .footer-menu li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+/*--------------------------------------------------------------
+## Next / Previous
+--------------------------------------------------------------*/
+/* Next/Previous navigation */
+.post-navigation {
+  margin: calc(3 * 1rem) 0;
+}
+@media only screen and (min-width: 768px) {
+  .post-navigation {
+    margin: calc(3 * 1rem) 5%;
+    max-width: calc(6 * (100vw / 12));
+  }
+}
+@media only screen and (min-width: 1168px) {
+  .post-navigation {
+    margin: calc(3 * 1rem) 0;
+    max-width: 100%;
+  }
+}
+.post-navigation .nav-links {
+  margin: 0 1rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+  .post-navigation .nav-links {
+    margin: 0;
+  }
+}
+@media only screen and (min-width: 1168px) {
+  .post-navigation .nav-links {
+    flex-direction: row;
+    margin: 0 5%;
+    max-width: calc(6 * (100vw / 12) - 28px);
+  }
+}
+.post-navigation .nav-links a .meta-nav {
+  color: #767676;
+  user-select: none;
+}
+.post-navigation .nav-links a .meta-nav:before, .post-navigation .nav-links a .meta-nav:after {
+  display: none;
+  content: "—";
+  width: 2em;
+  color: #767676;
+  height: 1em;
+}
+.post-navigation .nav-links a .post-title {
+  hyphens: auto;
+}
+.post-navigation .nav-links a:hover {
+  color: #e9c46a;
+}
+@media only screen and (min-width: 1168px) {
+  .post-navigation .nav-links .nav-previous,
+.post-navigation .nav-links .nav-next {
+    min-width: calc(50% - 2 * 1rem);
+  }
+}
+.post-navigation .nav-links .nav-previous {
+  order: 2;
+}
+@media only screen and (min-width: 1168px) {
+  .post-navigation .nav-links .nav-previous {
+    order: 1;
+  }
+}
+.post-navigation .nav-links .nav-previous + .nav-next {
+  margin-bottom: 1rem;
+}
+.post-navigation .nav-links .nav-previous .meta-nav:before {
+  display: inline;
+}
+.post-navigation .nav-links .nav-next {
+  order: 1;
+}
+@media only screen and (min-width: 1168px) {
+  .post-navigation .nav-links .nav-next {
+    order: 2;
+    padding-left: 1rem;
+  }
+}
+.post-navigation .nav-links .nav-next .meta-nav:after {
+  display: inline;
+}
+
+.pagination .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 calc(.5 * 1rem);
+}
+.pagination .nav-links > * {
+  padding: calc(.5 * 1rem);
+}
+.pagination .nav-links > *.dots, .pagination .nav-links > *.prev {
+  padding-left: 0;
+}
+.pagination .nav-links > *.dots, .pagination .nav-links > *.next {
+  padding-right: 0;
+}
+.pagination .nav-links a:focus {
+  text-decoration: underline;
+  outline-offset: -1px;
+}
+.pagination .nav-links a:focus.prev, .pagination .nav-links a:focus.next {
+  text-decoration: none;
+}
+.pagination .nav-links a:focus.prev .nav-prev-text,
+.pagination .nav-links a:focus.prev .nav-next-text, .pagination .nav-links a:focus.next .nav-prev-text,
+.pagination .nav-links a:focus.next .nav-next-text {
+  text-decoration: underline;
+}
+.pagination .nav-links .nav-next-text,
+.pagination .nav-links .nav-prev-text {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .pagination .nav-links {
+    margin-left: 5%;
+    padding: 0;
+  }
+  .pagination .nav-links .prev > *,
+.pagination .nav-links .next > * {
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
+  .pagination .nav-links > * {
+    padding: 1rem;
+  }
+}
+
+.comment-navigation .nav-links {
+  display: flex;
+  flex-direction: row;
+}
+.comment-navigation .nav-previous,
+.comment-navigation .nav-next {
+  min-width: 50%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+.comment-navigation .nav-previous .secondary-text,
+.comment-navigation .nav-next .secondary-text {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .comment-navigation .nav-previous .secondary-text,
+.comment-navigation .nav-next .secondary-text {
+    display: inline;
+  }
+}
+.comment-navigation .nav-previous svg,
+.comment-navigation .nav-next svg {
+  vertical-align: middle;
+  position: relative;
+  margin: 0 -0.35em;
+  top: -1px;
+}
+.comment-navigation .nav-next {
+  text-align: right;
+}
+
+/* Accessibility */
+/* Alignments */
+/* Clearings */
+/* Layout */
+/** === Layout === */
+.site-content {
+  overflow: hidden;
+  margin: 5%;
+}
+
+.site-main {
+  padding: 1.5%;
+  display: flex;
+  justify-content: center;
+  -webkit-animation: fadein 1s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s;
+  /* Firefox < 16 */
+  -ms-animation: fadein 1s;
+  /* Internet Explorer */
+  -o-animation: fadein 1s;
+  /* Opera < 12.1 */
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.home .featured-image {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+.home .featured-image img {
+  width: 95%;
+  height: 100%;
+  object-fit: contain;
+  min-width: 325px;
+  border: 2px solid black;
+}
+.home .text {
+  width: 50%;
+  padding-left: 5%;
+}
+
+.testimonials {
+  list-style: none;
+}
+.testimonials li p {
+  margin: 0;
+  font-size: 28px;
+}
+.testimonials li:before {
+  content: "";
+  display: inline-block;
+  background: url("./assets/brush-icon.svg");
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  margin-left: -60px;
+  margin-bottom: -45px;
+}
+
+.page-title {
+  margin-top: 0;
+  font-size: 60px;
+}
+
+/* Content */
+/* Widgets */
+/* Blocks */
+/* Media */
