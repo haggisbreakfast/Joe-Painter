@@ -26,6 +26,14 @@
 			color: $color__secondary-text;
 		}
 	}
+	@include media(tablet-down) {
+		flex-direction: column;
+		align-items: flex-start;
+		.main-navigation {
+			text-align: left;
+		}
+	
+	}
 
 	
 }
@@ -96,6 +104,7 @@
 	color: $color__background-footer !important;
 	margin: 0;
 	position: relative;
+	white-space: nowrap;
 	a {
 		color: $color__background-footer !important;
 
@@ -126,10 +135,7 @@
 		display: inline;
 	}
 
-	// &:not(:empty) + .site-description:not(:empty):before {
-	// 	content: "\2014";
-	// 	margin: 0 .2em;
-	// }
+
 	&:after {
 		content: '';
 		display: inline-block;
@@ -153,7 +159,7 @@
 // Site description
 
 .site-description {
-
+	white-space: nowrap;
 	display: inline;
 	color: $color__text-light;
 	font-weight: normal;

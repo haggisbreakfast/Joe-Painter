@@ -6,11 +6,24 @@
 		}
 	}
 
+	@if mobile-down == $res {
+		@media only screen and (max-width: $mobile_width) {
+			@content;
+		}
+	}
+
 	@if tablet == $res {
 		@media only screen and (min-width: $tablet_width) {
 			@content;
 		}
 	}
+
+	@if tablet-down == $res {
+		@media only screen and (max-width: $tablet_width) {
+			@content;
+		}
+	}
+
 
 	@if desktop == $res {
 		@media only screen and (min-width: $desktop_width) {

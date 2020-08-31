@@ -677,18 +677,6 @@ ul.wp-block-archives,
 		}
 	}
 
-	li {
-		padding-bottom: ( .5 * $size__spacing-unit );
-
-		&.menu-item-has-children,
-		&:last-child {
-			padding-bottom: 0;
-		}
-
-		:not(:last-child) .wp-block-latest-posts__post-excerpt {
-			padding-bottom: ( .5 * $size__spacing-unit );
-		}
-	}
 
 	&.is-grid {
 		li {

@@ -1076,15 +1076,6 @@ ul.wp-block-archives li ul,
 .wp-block-latest-posts .wp-block-latest-posts__post-excerpt > div > p:first-child {
   margin-top: 32px;
 }
-.wp-block-latest-posts li {
-  padding-bottom: 0.5rem;
-}
-.wp-block-latest-posts li.menu-item-has-children, .wp-block-latest-posts li:last-child {
-  padding-bottom: 0;
-}
-.wp-block-latest-posts li :not(:last-child) .wp-block-latest-posts__post-excerpt {
-  padding-bottom: 0.5rem;
-}
 .wp-block-latest-posts.is-grid li {
   border-top: 2px solid #ccc;
   padding-top: 1rem;
