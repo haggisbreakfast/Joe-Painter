@@ -951,6 +951,14 @@ body.page .main-navigation {
   font-size: 60px;
 }
 
+.wp-block-nextend-smartslider3 {
+  border: 1px solid yellow;
+  width: 80vw;
+}
+.wp-block-nextend-smartslider3 .n2_clear {
+  object-fit: contain;
+}
+
 /* Content */
 /* Widgets */
 /* Blocks */
