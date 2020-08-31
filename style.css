@@ -228,9 +228,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     flex-direction: column;
     align-items: flex-start;
   }
-  .site-header .main-navigation {
-    text-align: left;
-  }
 }
 
 .site-branding {
@@ -315,8 +312,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   content: "";
   display: inline-block;
   background: url("./assets/paint-can.svg");
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   margin-left: 10px;
   margin-top: -10px;
   background-position: center;
@@ -369,7 +366,7 @@ h1 {
 }
 @media only screen and (max-width: 768px) {
   h1 {
-    font-size: 60px;
+    font-size: 70px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -378,13 +375,32 @@ h1 {
   }
 }
 
+h2 {
+  font-size: 40px;
+}
+@media only screen and (max-width: 768px) {
+  h2 {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size: 24px;
+  }
+}
+
 body {
   font-family: "Josefin Sans", sans-serif;
 }
 
 p {
-  font-size: 22px;
+  font-size: 26px;
   color: black;
+}
+@media only screen and (max-width: 600px) {
+  p {
+    font-size: 20px;
+  }
 }
 
 /* Elements */
@@ -440,6 +456,13 @@ body.page .main-navigation {
 }
 .main-navigation li a:hover {
   color: #e9c46a !important;
+}
+@media only screen and (max-width: 768px) {
+  .main-navigation {
+    width: 100%;
+    text-align: left;
+    padding-top: 20px;
+  }
 }
 .main-navigation > div {
   display: inline;
@@ -825,6 +848,11 @@ body.page .main-navigation {
   /* Opera < 12.1 */
   animation: fadein 1s;
 }
+@media only screen and (max-width: 600px) {
+  .site-main {
+    flex-direction: column;
+  }
+}
 
 @keyframes fadein {
   from {
@@ -876,16 +904,29 @@ body.page .main-navigation {
   display: flex;
   justify-content: flex-start;
 }
+@media only screen and (max-width: 600px) {
+  .home .featured-image {
+    width: 100%;
+  }
+  .home .featured-image img {
+    width: 100%;
+  }
+}
 .home .featured-image img {
-  width: 95%;
+  width: 90%;
   height: 100%;
   object-fit: contain;
-  min-width: 325px;
   border: 2px solid black;
 }
 .home .text {
   width: 50%;
   padding-left: 5%;
+}
+@media only screen and (max-width: 600px) {
+  .home .text {
+    width: 100%;
+    padding-left: 0;
+  }
 }
 
 .testimonials {
@@ -893,7 +934,6 @@ body.page .main-navigation {
 }
 .testimonials li p {
   margin: 0;
-  font-size: 28px;
 }
 .testimonials li:before {
   content: "";
